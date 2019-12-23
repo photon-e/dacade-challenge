@@ -130,6 +130,20 @@ $('#addPost').click(async function(event){
       console.log("ContractCall Was Successfull")
       console.log(new_post);
     }
+
+   
+    post_arr.push({
+      // post_counter:new_post.id,
+      title:new_post.title,
+      id:new_post.id,
+      content:new_post.content,
+      timestamp:new Date(new_post.timestamp),
+      author:new_post.author,
+      tipped:Math.floor(new_post.tipped/1000000000000000000),
+      updated:new Date(new_post.updated)
+    })
+
+    
     $("#loading-bar-spinner").hide();
     renderPostList()
   event.preventDefault();
@@ -149,7 +163,7 @@ console.log("CLicked")
   console.log("-----------------")
   console.log("Data Index:", dataIndex)
   console.log("--------------------------")
-  console.log("Just Clicked The Buy Button")
+  console.log("Just Clicked The tip Button")
   event.preventDefault();
   console.log("Tip Successfully Made")
   $("#loading-bar-spinner").hide();
