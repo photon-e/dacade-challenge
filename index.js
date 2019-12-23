@@ -127,6 +127,9 @@ $('#addPost').click(async function(event){
     var content= ($("#content").val())
     if(title && content){
       var new_post= await contractCall('create_post', [title, content],0) 
+      var total = await callStatic('getPostLength', [])
+      var currentPost  = await callStatic('get_post_by_index', [total])
+
       console.log("ContractCall Was Successfull")
       console.log(new_post);
     }
@@ -134,13 +137,13 @@ $('#addPost').click(async function(event){
    
     post_arr.push({
       // post_counter:new_post.id,
-      title:new_post.title,
-      id:new_post.id,
-      content:new_post.content,
-      timestamp:new Date(new_post.timestamp),
-      author:new_post.author,
-      tipped:Math.floor(new_post.tipped/1000000000000000000),
-      updated:new Date(new_post.updated)
+      title:currentPost.title,
+      id:currentPost.id,
+      content:currentPost.content,
+      timestamp:new Date(currentPost.timestamp),
+      author:currentPost.author,
+      tipped:Math.floor(currentPost.tipped/1000000000000000000),
+      updated:new Date(currentPost.updated)
     })
 
     
