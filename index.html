@@ -1,0 +1,94 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Sociae</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <!-- <link href="css/mdb.min.css" rel="stylesheet"> -->
+  <!-- Your custom styles (optional) -->
+  <link href="css/style.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/scrollbar.css">
+  <link rel="stylesheet" href="css/loader.css">
+  </script>  
+</head>
+<body>
+  <div id="scrollbar">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Sociae</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+      <span class="navbar-text" id="user_address" >
+        account address
+      </span>
+    </div>
+  </nav>
+  <div class="container-fluid mt-5">
+    <div class="row">
+      <div class="col-md-12">
+        <!-- <div id="loader">####</div> -->
+        <div id="loading-bar-spinner" class="spinner"><div class="spinner-icon"></div></div>
+          <div class="form-group">
+            <input type="text" class="form-control" id="title" placeholder="Enter Post Title">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" id="content" placeholder="Enter Content">
+          </div>
+          <button type="button" id="addPost" class="btn btn-primary btn-block">Share</button>
+      </div>
+      <div  id="getAllPost">
+        <!-- getAllPost -->
+      </div>
+
+  </div>
+  </div>
+  <script id="template" type="x-tmpl-mustache">
+    {{#post_arr}}
+        <div class="card mt-3" style="width:100% ;">
+        <div class="card-header">
+          Top Stories
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{title}}</h5>
+          <p class="card-text">
+              Post Content
+              <span class="font-weight-bold">By</span> <span class="text-wrap font-weight-bold">{{author}}</span> 
+          </p>
+          <p class="card-text">
+            {{content}} <br />
+            <span class="font-weight-bold">Created on {{timestamp}}</span> <br /> 
+            <span class="font-weight-bold">Updated at {{updated}}</span> <br />
+            <span class="font-weight-bold">Amount Tipped:{{tipped}} ae</span> <br /> 
+          </p>
+          <a href="#" class="btn btn-primary tipBtn" id={{id}}>Tip 1.5ae</a>
+        </div>
+       <!--Card -->
+
+    </div>
+    {{/post_arr}}
+  </script>
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <!-- <script type="text/javascript" src="js/mdb.min.js"></script>
+   -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.js"></script>
+  <!-- aeternity -->
+  <script src="https://unpkg.com/@aeternity/aepp-sdk/dist/aepp-sdk.browser-script.js"></script>
+  <!-- custom js -->
+  <script type="text/javascript" src="index.js"></script>
+</body>
+</html>
