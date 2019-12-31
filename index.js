@@ -55,7 +55,10 @@ payable contract Post=
                 }
       put(state{posts[_id]=updated_post})
     else
-      abort("NOT ENOUGH ae")`
+      abort("NOT ENOUGH ae")
+
+`
+
 const contractAddress ='ct_2NfLfaJx2y83WcX3xoaqVyJveCQyJDAbTRTJ9qXazGLf6VwTyA'
 
 var client = null // client defuault null
@@ -146,10 +149,6 @@ console.log("CLicked")
   const tipped_post = await contractCall('tip_post', [dataIndex],1.5*1000000000000000000);
   console.log(tipped_post)
   
-  console.log("-----------------")
-  console.log("Data Index:", dataIndex)
-  console.log("--------------------------")
-  console.log("Just Clicked The Buy Button")
   event.preventDefault();
   console.log("Tip Successfully Made")
   $("#loading-bar-spinner").hide();
