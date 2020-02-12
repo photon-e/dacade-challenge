@@ -43,8 +43,8 @@ payable contract Post=
     let post = get_post_by_index(_id) 
     let post_author  = post.author : address
     Chain.spend(post_author, Call.value)
-    let post_tipped = post.tipped + Call.value
     if(Call.value > 0)
+      let post_tipped = post.tipped + Call.value
       let updated_post = {id=post.id,
                 title=post.title,
                 content=post.content,
@@ -113,7 +113,7 @@ window.addEventListener('load', async() => {
       content:getPostList.content,
       timestamp:new Date(getPostList.timestamp),
       author:getPostList.author,
-      tipped:Math.floor(getPostList.tipped/1000000000000000000),
+      // tipped:Math.floor(getPostList.tipped/1000000000000000000),
       updated:new Date(getPostList.updated)
     })
   }
