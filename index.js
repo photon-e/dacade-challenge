@@ -127,9 +127,26 @@ $('#addPost').click(async function(event){
     var content= ($("#content").val())
     if(title && content){
       var new_post= await contractCall('create_post', [title, content],0) 
+      var total = await callStatic('getPostLength', [])
+      var currentPost  = await callStatic('get_post_by_index', [total])
+
       console.log("ContractCall Was Successfull")
       console.log(new_post);
     }
+
+   
+    post_arr.push({
+      // post_counter:new_post.id,
+      title:currentPost.title,
+      id:currentPost.id,
+      content:currentPost.content,
+      timestamp:new Date(currentPost.timestamp),
+      author:currentPost.author,
+      tipped:Math.floor(currentPost.tipped/1000000000000000000),
+      updated:new Date(currentPost.updated)
+    })
+
+    
     $("#loading-bar-spinner").hide();
     renderPostList()
   event.preventDefault();
@@ -149,7 +166,7 @@ console.log("CLicked")
   console.log("-----------------")
   console.log("Data Index:", dataIndex)
   console.log("--------------------------")
-  console.log("Just Clicked The Buy Button")
+  console.log("Just Clicked The tip Button")
   event.preventDefault();
   console.log("Tip Successfully Made")
   $("#loading-bar-spinner").hide();
